@@ -6,66 +6,72 @@
   <img hidden width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
 
-<app-heroes></app-heroes>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+
+<router-outlet></router-outlet>
+
 <app-messages></app-messages>
 
-    <br />
+<br />
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-md-6">
+  <div class="col-md-6">
 
-            <input type="number" [(ngModel)]="num1" placeholder="Enter Number 1" class="form-control" />
+    <input type="number" [(ngModel)]="num1" placeholder="Enter Number 1" class="form-control" />
 
-        </div>
+  </div>
 
-        <div class="col-md-6">
+  <div class="col-md-6">
 
-            <input type="number" [(ngModel)]="num2" placeholder="Enter Number 2" class="form-control" />
+    <input type="number" [(ngModel)]="num2" placeholder="Enter Number 2" class="form-control" />
 
-        </div>
+  </div>
 
-    </div>
+</div>
 
-    <br />
+<br />
 
-    <div class="row text-center">
+<div class="row text-center">
 
-        <div class="col-md-3">
+  <div class="col-md-3">
 
-            <button class="btn btn-info" (click)='add()'>Add</button>
+    <button class="btn btn-info" (click)='add()'>Add</button>
 
-        </div>
+  </div>
 
-        <div class="col-md-3">
+  <div class="col-md-3">
 
-            <button class="btn btn-info" (click)='substract()'>Substract</button>
+    <button class="btn btn-info" (click)='substract()'>Substract</button>
 
-        </div>
+  </div>
 
-        <div class="col-md-3">
+  <div class="col-md-3">
 
-            <button class="btn btn-info" (click)='multiply()'>Multiply</button>
+    <button class="btn btn-info" (click)='multiply()'>Multiply</button>
 
-        </div>
+  </div>
 
-        <div class="col-md-3">
+  <div class="col-md-3">
 
-            <button class="btn btn-info" (click)='divide()'>Divide</button>
+    <button class="btn btn-info" (click)='divide()'>Divide</button>
 
-        </div>
+  </div>
 
-    </div>
+</div>
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-md-5 col-md-offset-4">
+  <div class="col-md-5 col-md-offset-4">
 
-            <h2>Result = {{result}} </h2>
+    <h2>Result = {{result}} </h2>
 
-        </div>
+  </div>
 
-    </div>
+</div>
 
 <!--
 <h2>Here are some links to help you start: </h2>
@@ -82,3 +88,4 @@
 </ul>
 
 -->
+
