@@ -22,17 +22,18 @@ export class HeroService {
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
 
-  // getHeroes(): Hero[] {
-  //   return HEROES;
-  // }
+  // dummy method to return the mock HEROES data
+  getHeroesByMock(): Hero[] {
+    return HEROES;
+  }
 
-  // getHeroes(): Observable<Hero[]> {
-  //   return of(HEROES);
-  // }
+  // dummy method to return the mock HEROES data by using Observable
+  getHeroesByObservable(): Observable<Hero[]> {
+    return of(HEROES);
+  }
 
+  // real http API call to return the HEROES data
   getHeroes(): Observable<Hero[]> {
-    // TODO: send the message _after_ fetching the heroes
-    // this.messageService.add('HeroService: fetched heroes');
 
     // return of(HEROES);
     this.log('get heroes from herosurl...');
@@ -40,9 +41,12 @@ export class HeroService {
 
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
+        tap(heroes => this.log('fetched heroes: ' + heroes)),
+        tap(heroes => this.log('fetched heroes x: ' + heroes)),
         catchError(this.handleError('getHeroes', []))
       );
+
+    // return this.http.get<Hero[]>(this.heroesUrl);
 
   }
 
