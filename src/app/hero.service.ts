@@ -73,6 +73,16 @@ updateHero (hero: Hero): Observable<any> {
   );
 }
 
+searchHeroes(term: string): Observable<Hero[]> {
+  if (!term.trim()) {
+    return of([]);
+  }
+  return this.http.get<Hero[]>(`api/heroes/?name=${term}`).pipe(
+    tap(_ => this.log(`found heroes matching "${term}"`)),
+    catchError(this.handleError<Hero[]>('searchHeroes', []))
+  );
+}
+
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
