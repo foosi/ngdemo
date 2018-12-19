@@ -13,7 +13,11 @@ import { MessagesComponent } from './messages/messages.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CalcComponent } from './calc/calc.component';
+<<<<<<< HEAD
 import { InfiniteScrollerDirective } from './infinite-scroller.directive';
+=======
+import { HeroSearchComponent } from './hero-search/hero-search.component';
+>>>>>>> fbdf67fd6f31059d2a0d19c5f7394d95700d7fa1
 
 @NgModule({
   declarations: [
@@ -23,7 +27,11 @@ import { InfiniteScrollerDirective } from './infinite-scroller.directive';
     MessagesComponent,
     DashboardComponent,
     CalcComponent,
+<<<<<<< HEAD
     InfiniteScrollerDirective
+=======
+    HeroSearchComponent
+>>>>>>> fbdf67fd6f31059d2a0d19c5f7394d95700d7fa1
   ],
   imports: [
     BrowserModule,

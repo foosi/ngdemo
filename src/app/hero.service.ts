@@ -22,17 +22,18 @@ export class HeroService {
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
 
-  // getHeroes(): Hero[] {
-  //   return HEROES;
-  // }
+  // dummy method to return the mock HEROES data
+  getHeroesByMock(): Hero[] {
+    return HEROES;
+  }
 
-  // getHeroes(): Observable<Hero[]> {
-  //   return of(HEROES);
-  // }
+  // dummy method to return the mock HEROES data by using Observable
+  getHeroesByObservable(): Observable<Hero[]> {
+    return of(HEROES);
+  }
 
+  // real http API call to return the HEROES data
   getHeroes(): Observable<Hero[]> {
-    // TODO: send the message _after_ fetching the heroes
-    // this.messageService.add('HeroService: fetched heroes');
 
     // return of(HEROES);
     this.log('get heroes from herosurl...');
@@ -40,9 +41,12 @@ export class HeroService {
 
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
-        tap(_ => this.log('fetched heroes')),
+        tap(heroes => this.log('fetched heroes: ' + heroes)),
+        tap(heroes => this.log('fetched heroes x: ' + heroes)),
         catchError(this.handleError('getHeroes', []))
       );
+
+    // return this.http.get<Hero[]>(this.heroesUrl);
 
   }
 
@@ -50,6 +54,8 @@ export class HeroService {
     // TODO: send the message _after_ fetching the heros
     // this.messageService.add(`HeroService: fetched hero id=${id}`);
     // return of(HEROES.find(hero => hero.id === id));
+
+    // convert to string
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -64,6 +70,16 @@ updateHero (hero: Hero): Observable<any> {
   return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
     tap(_ => this.log(`updated hero id=${hero.id}`)),
     catchError(this.handleError<any>('updateHero'))
+  );
+}
+
+searchHeroes(term: string): Observable<Hero[]> {
+  if (!term.trim()) {
+    return of([]);
+  }
+  return this.http.get<Hero[]>(`api/heroes/?name=${term}`).pipe(
+    tap(_ => this.log(`found heroes matching "${term}"`)),
+    catchError(this.handleError<Hero[]>('searchHeroes', []))
   );
 }
 
