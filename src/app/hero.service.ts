@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class HeroService {
 
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private heroesUrl = 'axx/heroes';  // URL to web api
 
 
 
